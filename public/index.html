@@ -10,7 +10,7 @@ and open the template in the editor.
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
         <script src="/socket.io/socket.io.js"></script>
         <script>
-            var socket = io.connect('http://localhost.com:5000');
+            var socket = io.connect('/');
             
             socket.on('hi', function (data) {
                 console.log(data);
