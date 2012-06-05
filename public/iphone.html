@@ -1,0 +1,41 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+        <title>Test</title>
+        <link href="css/style.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            var socket = io.connect('http://localhost.com:5000');
+            
+            socket.on('hi', function (data) {
+                console.log(data);
+                socket.emit('hi back', { connection: 'established' });
+            });
+            
+            $(window).load(function() {
+                $('.button').on('click', function(evt) {
+                    var bid = $(this).attr('id');
+                    socket.emit('button', { button: bid });
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div id="wrap">
+            <img src="images/nintendo.jpg" />
+            <a id="up" class="button" href="javascript:void(0);"></a>
+            <a id="down" class="button" href="javascript:void(0);"></a>
+            <a id="right" class="button" href="javascript:void(0);"></a>
+            <a id="left" class="button" href="javascript:void(0);"></a>
+            
+            <a id="b" class="button" href="javascript:void(0);"></a>
+            <a id="a" class="button" href="javascript:void(0);"></a>
+        </div>
+    </body>
+</html>

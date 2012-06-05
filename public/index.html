@@ -1,0 +1,57 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+        <title>Test</title>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            var socket = io.connect('http://localhost.com:5000');
+            
+            socket.on('hi', function (data) {
+                console.log(data);
+                socket.emit('hi back', { connection: 'established' });
+            });
+            
+            socket.on('button', function(data) {
+                console.dir(data);
+                $('footer p').text(data.button);
+            });
+        </script>
+    </head>
+    <body>
+        <div id="wrap">
+            <header>
+                <h1>Thanks for visiting!</h1>
+            </header>
+            <section>
+                <article>
+                    <p>Send your iphone to: <a id="iphone-link" href=""></a></p>
+                </article>
+            </section>
+            <footer>
+                <p></p>
+            </footer>
+        </div>
+        <script>
+            var App = function() {
+                var loc = document.location.host;
+                
+                this.setIphoneLink = function() {
+                    var iphone = document.getElementById('iphone-link');
+                    
+                    iphone.href = loc + '/iphone';
+                    iphone.innerHTML = loc + '/iphone';
+                }
+            };
+            
+            var a = new App();
+            a.setIphoneLink();
+            
+        </script>
+    </body>
+</html>
