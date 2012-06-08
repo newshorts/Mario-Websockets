@@ -96,3 +96,54 @@ table {
     top: 345px;
     left: 827px;
 }
+
+/*
+
+    MARIO KEYFRAME ANIMATION
+    
+*/
+
+.right {
+    transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+}
+
+.left {
+    transform: scaleX(1);
+    -webkit-transform: scaleX(1);
+    -moz-transform: scaleX(1);
+}
+
+.run {
+    width: 16px;
+    height: 28px;
+    border: 1px solid red;
+    background: url(../images/mario-sprite.png) scroll no-repeat black;
+    
+    animation: run 0.7s steps(2) infinite ;
+    -webkit-animation: run 0.7s steps(2, end) infinite ;
+    -moz-animation: run 0.7s steps(2, end) infinite ;
+    -ms-animation: run 0.7s steps(2, end) infinite ;
+}
+
+@keyframes run {
+    0% { background-position: -295px -750px; }
+    100% { background-position: -325px -750px; }
+}
+
+@-webkit-keyframes run {
+    0% { background-position: -295px -750px; }
+    100% { background-position: -325px -750px; }
+}
+
+@-moz-keyframes run {
+    0% { background-position: -295px -750px; }
+    100% { background-position: -325px -750px; }
+}
+
+@-ms-keyframes run {
+    0% { background-position: -295px -750px; }
+    100% { background-position: -325px -750px; }
+}
+

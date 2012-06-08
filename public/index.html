@@ -7,6 +7,7 @@ and open the template in the editor.
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
         <title>Test</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
         <script src="/socket.io/socket.io.js"></script>
         <script>
@@ -19,6 +20,11 @@ and open the template in the editor.
             
             socket.on('button', function(data) {
                 console.dir(data);
+                
+                if(data.button == 'right') {
+                    $('#mario').attr('class', data.button);
+                }
+                
                 $('footer p').text(data.button);
             });
         </script>
@@ -33,8 +39,9 @@ and open the template in the editor.
                     <p>Send your iphone to: <a id="iphone-link" href=""></a></p>
                 </article>
             </section>
+            <div id="mario" class="run left"></div>
             <footer>
-                <p></p>
+                
             </footer>
         </div>
         <script>
