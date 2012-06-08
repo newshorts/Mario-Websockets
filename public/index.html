@@ -22,7 +22,7 @@ and open the template in the editor.
                 console.dir(data);
                 
                 if(data.button == 'right') {
-                    $('#mario').attr('class', data.button);
+                    $('#mario').removeClass().addClass('run ' + data.button);
                 }
                 
                 $('footer p').text(data.button);
@@ -41,6 +41,7 @@ and open the template in the editor.
             </section>
             <div id="mario" class="run left"></div>
             <footer>
+                <p></p>
                 <img src="http://qrcode.kaywa.com/img.php?s=6&d=http%3A%2F%2Fmario-websockets.herokuapp.com%2Fiphone" alt="qrcode"  />
             </footer>
         </div>
