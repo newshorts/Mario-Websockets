@@ -126,5 +126,6 @@ footer {
     text-align: center;
 }
 
-
-
+footer img {
+    width: 200px;
+}
