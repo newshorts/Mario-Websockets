@@ -29,6 +29,12 @@
     background: url(../images/mario-sprite.png) scroll no-repeat black;
     margin: 200px auto; 
     
+    /* GPU Acceleration */
+/*    transform: translateZ(5);
+    -webkit-transform: translateZ(5);
+    -moz-transform: translateZ(5);*/
+    
+    /* Animation */
     animation: run 0.7s steps(2) infinite ;
     -webkit-animation: run 0.7s steps(2, end) infinite ;
     -moz-animation: run 0.7s steps(2, end) infinite ;
