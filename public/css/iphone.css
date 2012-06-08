@@ -1,14 +1,9 @@
 /* 
-    Document   : style
-    Created on : Jun 5, 2012, 12:02:26 AM
+    Document   : iphone
+    Created on : Jun 7, 2012, 10:58:12 PM
     Author     : newe1344
     Description:
         Purpose of the stylesheet follows.
-*/
-
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
 */
 
 html, body, div, span, applet, object, iframe,
@@ -67,64 +62,36 @@ table {
     border: 1px solid green;
 }
 
-/*
-    DEFAULT STYLES
-*/
-
-@font-face {
-  font-family: 'Bevan';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Bevan'), url('https://themes.googleusercontent.com/static/fonts/bevan/v4/EJh9uh2wkQP9ayreC3xPZaCWcynf_cDxXwCLxiixG1c.woff') format('woff');
+root { 
+    display: block;
 }
 
-body {
-    background-color: black;
-    color: #fbfbfb;
-    font-family: 'Bevan', serif;
+#up {
+    top: 197px;
+    left: 118px;
 }
 
-h1, h2, h3, h4, h5 {
-    margin: 12px 0;
+#down {
+    top: 357px;
+    left: 121px;
 }
 
-h1 { font-size: 36px; line-height: 38px; }
-h2 { font-size: 24px; line-height: 26px; }
-h3 { font-size: 18px; line-height: 20px; }
-h4 { font-size: 14px; line-height: 16px; }
-h5 { font-size: 12px; line-height: 14px; }
-p {
-    font-size: 16px;
-    line-height: 17px;
-    margin: 12px 0;
+#right {
+    top: 279px;
+    left: 198px;
 }
 
-a {
-    color: #2e70c4;
-    text-decoration: none;
+#left {
+    top: 280px;
+    left: 39px;
 }
 
-/*
-    CUSTOM STYLES
-*/
-
-#wrap {
-    width: 960px;
-    margin: 0 auto;
-    padding-top: 50px;
+#b {
+    top: 345px;
+    left: 693px;
 }
 
-header h1 {
-    text-align: center;
+#a {
+    top: 345px;
+    left: 827px;
 }
-
-section article p {
-    text-align: center;
-}
-
-footer {
-    text-align: center;
-}
-
-
-

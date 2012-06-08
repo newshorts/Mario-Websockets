@@ -1,0 +1,56 @@
+/* 
+    Document   : animation
+    Created on : Jun 7, 2012, 11:11:56 PM
+    Author     : newe1344
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/*
+    ANIMATION  
+*/
+
+.right {
+    transform: scale(-5, 5);
+    -webkit-transform: scale(-5, 5);
+    -moz-transform: scale(-5, 5);
+}
+
+.left {
+    transform: scale(5, 5);
+    -webkit-transform: scale(5, 5);
+    -moz-transform: scale(5, 5);
+}
+
+.run {
+    width: 16px;
+    height: 28px;
+/*    border: 1px solid red;*/
+    background: url(../images/mario-sprite.png) scroll no-repeat black;
+    margin: 200px auto; 
+    
+    animation: run 0.7s steps(2) infinite ;
+    -webkit-animation: run 0.7s steps(2, end) infinite ;
+    -moz-animation: run 0.7s steps(2, end) infinite ;
+    -ms-animation: run 0.7s steps(2, end) infinite ;
+}
+
+@keyframes run {
+    0% { background-position: -295px -750px; }
+    100% { background-position: -325px -750px; }
+}
+
+@-webkit-keyframes run {
+    0% { background-position: -295px -750px; }
+    100% { background-position: -325px -750px; }
+}
+
+@-moz-keyframes run {
+    0% { background-position: -295px -750px; }
+    100% { background-position: -325px -750px; }
+}
+
+@-ms-keyframes run {
+    0% { background-position: -295px -750px; }
+    100% { background-position: -325px -750px; }
+}
