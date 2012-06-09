@@ -10,25 +10,8 @@ and open the template in the editor.
         <link rel="stylesheet" type="text/css" href="css/style.css" />
         <link rel="stylesheet" type="text/css" href="css/animation.css" />
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script src="js/turtle.js"></script>
         <script src="/socket.io/socket.io.js"></script>
-        <script>
-            var socket = io.connect('/');
-            
-            socket.on('hi', function (data) {
-                console.log(data);
-                socket.emit('hi back', { connection: 'established' });
-            });
-            
-            socket.on('button', function(data) {
-                console.dir(data);
-                
-                if(data.button) {
-                    $('#mario').removeClass().addClass('run ' + data.button);
-                }
-                
-                $('footer p').text('Direction: ' + data.button);
-            });
-        </script>
     </head>
     <body>
         <div id="wrap">
@@ -40,23 +23,52 @@ and open the template in the editor.
                     <p>Scan the QR code to control the mario character.</p>
                 </article>
             </section>
-            <div id="mario" class="run left"></div>
+            <div id="world">
+<!--                <div id="mario" class="run left"></div>-->
+            </div>
+            
             <footer>
                 <p></p>
                 <img src="images/qr.jpeg" alt="qrcode"  />
             </footer>
         </div>
         <script>
-            var App = function() {
-                var loc = document.location.host;
-                
-                this.init = function() {
-                    // init the app
-                };
-            };
             
-            var a = new App();
-            a.init();
+            (function($) {
+                var t = new Turtle();
+                
+                $(window).load(function() {    
+                    t.init({
+                        world: 'world',
+                        direction: 'left',
+                        action: 'walk'
+                    });
+                });
+                
+                var socket = io.connect('/');
+            
+                socket.on('hi', function (data) {
+                    console.log(data);
+                    socket.emit('hi back', { connection: 'established' });
+                });
+
+                socket.on('button', function(data) {
+                    console.dir(data);
+
+                    if(data.event == 'touchstart') {
+                        t.move(data.button);
+//                        $('.turtle').removeClass().addClass('turtle walk ' + data.button + ' animate');
+                    }
+
+                    if(data.event == 'touchend') {
+                        t.stop(data.button);
+//                        $('.turtle').removeClass().addClass('turtle walk ' + data.button);
+                    }
+
+                    $('footer p').text('Direction: ' + data.button);
+                });
+                
+            })(jQuery);
             
         </script>
     </body>

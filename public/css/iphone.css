@@ -60,6 +60,11 @@ table {
     height: 75px;
     position: absolute;
     border: 1px solid green;
+    
+    /* behavior */
+    -webkit-user-select: none;                /* disable cut copy paste */
+    -webkit-touch-callout: none;              /* disable callout, image save panel */
+    -webkit-tap-highlight-color: transparent; /* "turn off" link highlight */
 }
 
 root { 

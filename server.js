@@ -35,17 +35,13 @@ app.get('/iphone', function(req, res) {
 var a = new App();
 io.sockets.on('connection', function(socket) {
     
-//    a.setHeartbeat(socket);
-    
-//    socket.emit('hi', { connection: 'trying to establish'});
-    
     socket.on('hi back', function(data) {
         console.log(data);
     });
     
-    socket.on('button', function(data) {
+    socket.on('down', function(data) {
         console.log(data);
-        socket.broadcast.emit('button', data)
+        socket.broadcast.emit('button', data);
     });
     
 });

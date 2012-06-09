@@ -79,8 +79,8 @@ table {
 }
 
 body {
-    background-color: black;
-    color: #fbfbfb;
+    background-color: fbfbfb;
+    color: #2b2b2b;
     font-family: 'Bevan', serif;
 }
 
@@ -120,6 +120,19 @@ header h1 {
 
 section article p {
     text-align: center;
+}
+
+#world {
+    position: relative;
+    width: 960px;
+    height: 400px;
+    background-color: black;
+}
+
+#mario {
+    position: absolute;
+    top: 0px;
+    left: 50%;
 }
 
 footer {
