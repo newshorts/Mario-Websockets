@@ -33,43 +33,45 @@ and open the template in the editor.
             </footer>
         </div>
         <script>
-            // TODO: debug this
-            (function($) {
-                var t = new Turtle();
-                
-                $(window).load(function() {    
-                    t.init({
-                        world: 'world',
-                        direction: 'left',
-                        action: 'walk'
-                    });
-                    
-                });
-                
-                var socket = io.connect('/');
+            var t = new Turtle();
             
-                socket.on('hi', function (data) {
-                    socket.emit('hi back', { connection: 'established' });
-                });
-
-                socket.on('button', function(data) {
-                    
-                    console.dir(data);
-
-                    if(data.event == 'touchstart') {
-                        t.move(data.button);
-//                        $('.turtle').removeClass().addClass('turtle walk ' + data.button + ' animate');
-                    }
-
-                    if(data.event == 'touchend') {
-                        t.stop(data.button);
-//                        $('.turtle').removeClass().addClass('turtle walk ' + data.button);
-                    }
-
-                    $('footer p').text('Direction: ' + data.button);
+            (function() {
+                
+                t.controller.init({
+                    world: 'world',
+                    direction: 'left',
+                    action: 'walk'
                 });
                 
-            })(jQuery);
+            }());
+            
+            console.dir(t);
+
+            var socket = io.connect('/');
+
+            socket.on('hi', function (data) {
+                console.dir(data);
+                socket.emit('hi back', { connection: 'established' });
+            });
+
+            socket.on('button', function(data) {
+
+                console.dir(data);
+
+                if(data.event == 'touchstart') {
+                    t.controller.walk(data.button);
+//                        $('.turtle').removeClass().addClass('turtle walk ' + data.button + ' animate');
+                }
+
+                if(data.event == 'touchend') {
+                    t.controller.stop(data.button);
+//                        $('.turtle').removeClass().addClass('turtle walk ' + data.button);
+                }
+
+                $('footer p').text('Direction: ' + data.button);
+
+            });
+
             
         </script>
     </body>

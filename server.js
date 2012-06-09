@@ -35,11 +35,13 @@ app.get('/iphone', function(req, res) {
 var a = new App();
 io.sockets.on('connection', function(socket) {
     
+    socket.emit('hi', { connection: 'established' });
+    
     socket.on('hi back', function(data) {
         console.log(data);
     });
     
-    socket.on('down', function(data) {
+    socket.on('button', function(data) {
         console.log(data);
         socket.broadcast.emit('button', data);
     });

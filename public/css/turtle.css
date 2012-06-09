@@ -3,7 +3,7 @@
     Created on : Jun 8, 2012, 11:14:09 PM
     Author     : newe1344
     Description:
-        Purpose of the stylesheet follows.
+        Turtle styles
 */
 
 .turtle {
@@ -14,8 +14,6 @@
     position: absolute;
     top: 0;
     left: 50%;
-    
-    
 }
 
 .turtle.right {
