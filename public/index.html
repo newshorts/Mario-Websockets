@@ -33,7 +33,7 @@ and open the template in the editor.
             </footer>
         </div>
         <script>
-            
+            // TODO: debug this
             (function($) {
                 var t = new Turtle();
                 
@@ -43,16 +43,17 @@ and open the template in the editor.
                         direction: 'left',
                         action: 'walk'
                     });
+                    
                 });
                 
                 var socket = io.connect('/');
             
                 socket.on('hi', function (data) {
-                    console.log(data);
                     socket.emit('hi back', { connection: 'established' });
                 });
 
                 socket.on('button', function(data) {
+                    
                     console.dir(data);
 
                     if(data.event == 'touchstart') {

@@ -33,6 +33,8 @@ var Turtle = function() {
             lower: 0
         }
         
+        console.dir(bounds);
+        
         return bounds;
         
     }
