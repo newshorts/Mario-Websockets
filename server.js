@@ -41,9 +41,14 @@ io.sockets.on('connection', function(socket) {
         console.log(data);
     });
     
-    socket.on('button', function(data) {
+    socket.on('touchstart', function(data) {
         console.log(data);
-        socket.broadcast.emit('button', data);
+        socket.broadcast.emit('touchstart', data);
+    });
+    
+    socket.on('touchend', function(data) {
+        console.log(data);
+        socket.broadcast.emit('touchend', data);
     });
     
 });

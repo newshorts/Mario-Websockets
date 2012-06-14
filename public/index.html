@@ -1,78 +1,37 @@
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
+﻿<!doctype html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
-        <title>HTML5 Mario</title>
-        <link rel="stylesheet" type="text/css" href="css/style.css" />
-        <link rel="stylesheet" type="text/css" href="css/animation.css" />
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-        <script src="js/turtle.js"></script>
-        <script src="/socket.io/socket.io.js"></script>
+        <meta charset=utf-8 />
+        <title>Super Mario HTML5 Test</title>
+        <link href="Content/style.css" rel="stylesheet" />
     </head>
     <body>
-        <div id="wrap">
-            <header>
-                <h1>OMG, WTF!</h1>
-            </header>
-            <section>
-                <article>
-                    <p>Scan the QR code to control the mario character.</p>
-                </article>
-            </section>
-            <div id="world">
-<!--                <div id="mario" class="run left"></div>-->
-            </div>
-            
-            <footer>
-                <p></p>
-                <img src="images/qr.jpeg" alt="qrcode"  />
-            </footer>
+        <div id="game">
+            <div id="world"></div>
+            <div id="coinNumber" class="gauge">0</div>
+            <div id="coin" class="gaugeSprite"></div>
+            <div id="liveNumber" class="gauge">0</div>
+            <div id="live" class="gaugeSprite"></div>
         </div>
+        <div id="instructions" style="width: 300px;">
+            <h1>Instructions:</h1>
+            <p>Scan the QR code below or visit: <a href="">http://Mario-Websockets.herokuapp.com</a> on your iPhone to start playing!</p>
+            <img src="Images/qr.jpeg" width="150" />
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="Scripts/jQuery.js"><\/script>')</script>
+        <script src="/socket.io/socket.io.js"></script>
         <script>
-            var t = new Turtle();
-            
-            (function() {
-                
-                t.controller.init({
-                    world: 'world',
-                    direction: 'left',
-                    action: 'walk'
-                });
-                
-            }());
-            
-            console.dir(t);
-
             var socket = io.connect('/');
-
-            socket.on('hi', function (data) {
-                console.dir(data);
+            
+            socket.on('button', function (data) {
                 socket.emit('hi back', { connection: 'established' });
             });
-
-            socket.on('button', function(data) {
-
-                console.dir(data);
-
-                if(data.event == 'touchstart') {
-                    t.controller.walk(data.button);
-//                        $('.turtle').removeClass().addClass('turtle walk ' + data.button + ' animate');
-                }
-
-                if(data.event == 'touchend') {
-                    t.controller.stop(data.button);
-//                        $('.turtle').removeClass().addClass('turtle walk ' + data.button);
-                }
-
-                $('footer p').text('Direction: ' + data.button);
-
-            });
-
-            
         </script>
+        <script src="Scripts/testlevels.js"></script>
+        <script src="Scripts/oop.js"></script>
+        <script src="Scripts/keys.js"></script>
+        <script src="Scripts/constants.js"></script>
+        <script src="Scripts/main.js"></script>
     </body>
 </html>

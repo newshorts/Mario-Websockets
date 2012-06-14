@@ -20,29 +20,23 @@ and open the template in the editor.
             });
             
             $(window).load(function() {
-//                $('.button').on('click', function(evt) {
-//                    evt.preventDefault();
-//                    var bid = $(this).attr('id');
-//                    socket.emit('button', { button: bid });
-//                });
-
                 $('.button').on('touchstart', function(evt) {
-
                     evt.preventDefault();                    
-                    var bid = $(this).attr('id');
-                    socket.emit('button', { 
-                        button: bid,
-                        event: 'touchstart'
+                    var keycode = $(this).attr('keyCode');
+                    socket.emit('touchstart', { 
+                        event: {
+                            keyCode: keycode
+                        }
                     });
-                    
                 });
                 
                 $('.button').on('touchend', function(evt) {
-                    evt.preventDefault();
-                    var bid = $(this).attr('id');
-                    socket.emit('button', { 
-                        button: bid,
-                        event: 'touchend'
+                    evt.preventDefault();                    
+                    var keycode = $(this).attr('keyCode');
+                    socket.emit('touchend', { 
+                        event: {
+                            keyCode: keycode
+                        }
                     });
                 });
             });
@@ -50,14 +44,14 @@ and open the template in the editor.
     </head>
     <body>
         <div id="wrap">
-            <img src="images/nintendo.jpg" />
-            <a id="up" class="button" href="#"></a>
-            <a id="down" class="button" href="javascript:void(0);"></a>
-            <a id="right" class="button" href="javascript:void(0);"></a>
-            <a id="left" class="button" href="javascript:void(0);"></a>
+            <img src="Images/nintendo.jpeg" />
+            <a id="up" class="button" keyCode="38" href="#"></a>
+            <a id="down" class="button" keyCode="40" href="javascript:void(0);"></a>
+            <a id="right" class="button" keyCode="39" href="javascript:void(0);"></a>
+            <a id="left" class="button" keyCode="37" href="javascript:void(0);"></a>
             
-            <a id="b" class="button" href="javascript:void(0);"></a>
-            <a id="a" class="button" href="javascript:void(0);"></a>
+            <a id="b" class="button" keyCode="65" href="javascript:void(0);"></a>
+            <a id="a" class="button" keyCode="65" href="javascript:void(0);"></a>
         </div>
     </body>
 </html>
