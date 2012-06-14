@@ -34,26 +34,15 @@
             });
             
             socket.on('touchstart', function (data) {
-                console.dir(data.event);
-                
                 var e = $.Event("keydown");
                 e.keyCode = parseInt(data.event.keyCode);                     
                 $(document).trigger(e); 
-                
             });
 
             socket.on('touchend', function (data) {
-                
-                data.event.keyCode = parseInt(data.event.keyCode);
-                
                 var e = $.Event("keyup");
                 e.keyCode = parseInt(data.event.keyCode);                     
-                $(document).trigger(e); 
-                
-//                var e = $.Event("keypress");
-//                e.which = parseInt(data.event.keyCode); // # Some key code value
-//                console.dir(e);
-//                $(document).trigger(e)
+                $(document).trigger(e);
             });
         </script>
     </body>
