@@ -8,22 +8,22 @@
 
 var keys = {
 	bind : function() {
-//		$(document).on('keydown', function(event) {	
-//			return keys.handler(event, true);
-//		});
-//		$(document).on('keyup', function(event) {	
-//			return keys.handler(event, false);
-//		});
-
-                socket.on('touchstart', function (data) {
-                    console.dir(data);
-                    return keys.handler(data.event, true);
-                });
-                
-                socket.on('touchend', function (data) {
-                    console.dir(data);
-                    return keys.handler(data.event, true);
-                });
+		$(document).on('keydown', function(event) {	
+			return keys.handler(event, true);
+		});
+		$(document).on('keyup', function(event) {
+                    console.dir(event);
+			return keys.handler(event, false);
+		});
+//                socket.on('touchstart', function (data) {
+//                    
+//                    return keys.handler(data.event, true);
+//                });
+//                
+//                socket.on('touchend', function (data) {
+//                    console.dir(data);
+//                    return keys.handler(data.event, true);
+//                });
 	},
 	reset : function() {
 		keys.left = false;
@@ -33,13 +33,13 @@ var keys = {
 		keys.down = false;
 	},
 	unbind : function() {
-//		$(document).off('keydown');
-//		$(document).off('keyup');
-                socket.off('touchstart');
-                socket.off('touchend');
+		$(document).off('keydown');
+		$(document).off('keyup');
+//                socket.off('touchstart');
+//                socket.off('touchend');
 	},
 	handler : function(event, status) {
-		switch(parseInt(event.keyCode)) {
+		switch(event.keyCode) {
 			case 57392://CTRL on MAC
 			case 17://CTRL
 			case 65://A

@@ -21,17 +21,40 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="Scripts/jQuery.js"><\/script>')</script>
         <script src="/socket.io/socket.io.js"></script>
+        <script src="Scripts/testlevels.js"></script>
+        <script src="Scripts/oop.js"></script>
+        <script src="Scripts/keys.js"></script>
+        <script src="Scripts/constants.js"></script>
+        <script src="Scripts/main.js"></script>
         <script>
             var socket = io.connect('/');
             
             socket.on('button', function (data) {
                 socket.emit('hi back', { connection: 'established' });
             });
+            
+            socket.on('touchstart', function (data) {
+                console.dir(data.event);
+                
+                var e = $.Event("keydown");
+                e.keyCode = parseInt(data.event.keyCode);                     
+                $(document).trigger(e); 
+                
+            });
+
+            socket.on('touchend', function (data) {
+                
+                data.event.keyCode = parseInt(data.event.keyCode);
+                
+                var e = $.Event("keyup");
+                e.keyCode = parseInt(data.event.keyCode);                     
+                $(document).trigger(e); 
+                
+//                var e = $.Event("keypress");
+//                e.which = parseInt(data.event.keyCode); // # Some key code value
+//                console.dir(e);
+//                $(document).trigger(e)
+            });
         </script>
-        <script src="Scripts/testlevels.js"></script>
-        <script src="Scripts/oop.js"></script>
-        <script src="Scripts/keys.js"></script>
-        <script src="Scripts/constants.js"></script>
-        <script src="Scripts/main.js"></script>
     </body>
 </html>
