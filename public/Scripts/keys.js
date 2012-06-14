@@ -33,8 +33,10 @@ var keys = {
 		keys.down = false;
 	},
 	unbind : function() {
-		$(document).off('keydown');
-		$(document).off('keyup');
+//		$(document).off('keydown');
+//		$(document).off('keyup');
+                socket.off('touchstart');
+                socket.off('touchend');
 	},
 	handler : function(event, status) {
 		switch(parseInt(event.keyCode)) {
